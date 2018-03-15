@@ -1,0 +1,5 @@
+package static
+
+/**
+ * Created by ccy on 2018/2/9.
+ */
