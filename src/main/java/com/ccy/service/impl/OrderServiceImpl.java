@@ -116,7 +116,7 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
 
-        Page<OrderDTO> orderDTOPage = new PageImpl<OrderDTO>(orderDTOList, pageable, orderMasterPage.getTotalPages());
+        Page<OrderDTO> orderDTOPage = new PageImpl<OrderDTO>(orderDTOList, pageable, orderMasterPage.getTotalElements());
 
         return orderDTOPage;
     }
@@ -151,7 +151,6 @@ public class OrderServiceImpl implements OrderService {
 
         //如果已支付，需要退款
         if(orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())){
-            //TODO
             payService.refund(orderDTO);
         }
         return orderDTO;
@@ -208,7 +207,7 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
 
-        Page<OrderDTO> orderDTOPage = new PageImpl<OrderDTO>(orderDTOList, pageable, orderMasterPage.getTotalPages());
+        Page<OrderDTO> orderDTOPage = new PageImpl<OrderDTO>(orderDTOList, pageable, orderMasterPage.getTotalElements());
 
         return orderDTOPage;
     }

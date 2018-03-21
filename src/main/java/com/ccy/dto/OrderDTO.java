@@ -3,7 +3,9 @@ package com.ccy.dto;
 import com.ccy.dataobject.OrderDetail;
 import com.ccy.enums.OrderStatusEnum;
 import com.ccy.enums.PayStatusEnum;
+import com.ccy.util.EnumUtil;
 import com.ccy.util.serializer.Date2lLongSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
@@ -43,4 +45,14 @@ public class OrderDTO {
     /** 更新时间. */
     @JsonSerialize(using = Date2lLongSerializer.class)
     private Date updateTime;
+
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumUtil.getByCode(payStatus, OrderStatusEnum.class);
+    }
+
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
+    }
 }
