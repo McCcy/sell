@@ -31,11 +31,17 @@
                     <td>${orderDTO.buyerPhone}</td>
                     <td>${orderDTO.buyerAddress}</td>
                     <td>${orderDTO.orderAmount}</td>
-                    <td>${orderDTO.orderStatusEnum.getMsg()}</td>
-                    <td>${orderDTO.payStatusEnum.getMsg()}</td>
+                    <td>${orderDTO.getOrderStatusEnum().msg}</td>
+                    <td>${orderDTO.getPayStatusEnum().msg}</td>
                     <td>${orderDTO.createTime}</td>
-                    <td>详情</td>
-                    <td>取消</td>
+                    <td>
+                        <a href="/seller/order/detail?orderId=${orderDTO.orderId}">详情</a>
+                    </td>
+                    <td>
+                        <#if orderDTO.getOrderStatusEnum().msg == "新订单">
+                            <a href="/seller/order/cancel?orderId=${orderDTO.orderId}">取消</a>
+                        </#if>
+                    </td>
                 </tr>
                 </#list>
                 </tbody>
