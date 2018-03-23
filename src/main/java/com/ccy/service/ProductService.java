@@ -29,4 +29,10 @@ public interface ProductService {
     void decreaseStock(List<CartDTO> cartDTOList);
 
     //List<ProductInfo> findByProductStatus(Integer ProductStatus);
+
+    //上架
+    ProductInfo onSale(String productId);
+
+    //下架
+    ProductInfo offSale(String productId);
 }
